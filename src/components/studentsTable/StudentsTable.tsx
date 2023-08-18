@@ -1,7 +1,15 @@
 import { IStudent } from '@/types/student';
-import './studentsTable.module.css';
+import classes from './studentsTable.module.css';
 
-export function StudentsTable({ students }: { students: IStudent[] }) {
+interface IStudentsTableProps {
+  students: IStudent[];
+  updateStudentsHandler: any;
+}
+
+export function StudentsTable({
+  students,
+  updateStudentsHandler,
+}: IStudentsTableProps) {
   return (
     <table>
       <thead>
@@ -14,20 +22,33 @@ export function StudentsTable({ students }: { students: IStudent[] }) {
       </thead>
 
       <tbody>
-        {students.map(student => (
-          <tr key={student.id}>
-            <td>{/* <img src={student.avatar} alt="avatar" /> */}</td>
-            <td>{student.name}</td>
-            <td>{student.specialty}</td>
-            <td>{student.group}</td>
-            <td>{student.birthday}</td>
-            <td>{student.rating}</td>
-            <td>{student.color}</td>
-            <td>
-              <button>cart</button>
-            </td>
-          </tr>
-        ))}
+        {students.length ? (
+          students.map(student => (
+            <tr key={student.id}>
+              <td>
+                <img
+                  className={classes.avatar}
+                  src={student.avatar}
+                  alt="avatar"
+                />
+              </td>
+              <td>{student.name}</td>
+              <td>{student.specialty}</td>
+              <td>{student.group}</td>
+              <td>{student.birthday}</td>
+              <td>{student.rating}</td>
+              <td>{student.color}</td>
+              <td>
+                <button
+                  onClick={() => updateStudentsHandler(students, student.id)}>
+                  cart
+                </button>
+              </td>
+            </tr>
+          ))
+        ) : (
+          <div>Список студентов пуст</div>
+        )}
       </tbody>
     </table>
   );

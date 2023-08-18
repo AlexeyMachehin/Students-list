@@ -10,10 +10,3 @@ h1 {
   display: flex;
   margin-bottom: 36px;
 }
-
-.searchInput {
-  width: 100%;
-  padding: 15px 20px;
-  border-radius: 6px;
-  box-shadow: 0px 7px 64px 0px rgba(0, 0, 0, 0.07);
-}

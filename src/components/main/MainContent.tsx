@@ -3,6 +3,11 @@ import { IStudent } from '@/types/student';
 import { fetchUsers } from '@/utils/fetchUsers';
 import { searchStudents } from '@/utils/searchStudents';
 import { StudentsTable } from '../studentsTable/StudentsTable';
+import { Select } from '../select/Select';
+import { sortStudents } from '@/utils/sortStudents';
+import { SortOptions } from '@/types/sortOptions';
+import { SearchInput } from '../searchInput/SearchInput';
+import { updateStudents } from '@/utils/updateStudents';
 import classes from './mainContent.module.css';
 
 export function MainContent() {
@@ -18,34 +23,37 @@ export function MainContent() {
     setFoundStudents(searchStudents(searchQuery, students));
   }, [searchQuery]);
 
+  const selectHandler = (value: SortOptions): void => {
+    setStudents(sortStudents(students, value));
+  };
+
+  const updateStudentsHandler = (
+    studentsForUpdate: IStudent[],
+    studentId: number,
+  ): void => {
+    setStudents(updateStudents(studentsForUpdate, studentId));
+  };
+
   return (
     <div className={classes.mainContent}>
       <div className="container">
         <h1>Студенты</h1>
 
         <div className={classes.filters}>
-          <input
-            className={classes.searchInput}
-            type="search"
-            placeholder="Поиск по имени"
-            onChange={e => setSearchQuery(e.target.value)}
-          />
+          <SearchInput handler={setSearchQuery} />
 
-          <select
-            id="sortSelect"
-            //  onchange="sortItems()"
-          >
-            <option value="name-asc">Имя А-Я</option>
-            <option value="name-desc">Имя Я-А</option>
-            <option value="age-asc">Сначала моложе</option>
-            <option value="age-desc">Сначала старше</option>
-            <option value="rating-desc">Высокий рейтинг</option>
-            <option value="rating-asc">Низкий рейтинг</option>
-          </select>
+          <Select handler={selectHandler}>
+            <option value={SortOptions.NameAsc}>Имя А-Я</option>
+            <option value={SortOptions.NameDesc}>Имя Я-А</option>
+            <option value={SortOptions.AgeDesc}>Сначала старше</option>
+            <option value={SortOptions.RatingDesc}>Высокий рейтинг</option>
+            <option value={SortOptions.RatingAsc}>Низкий рейтинг</option>
+          </Select>
         </div>
 
         <StudentsTable
           students={foundStudents.length ? foundStudents : students}
+          updateStudentsHandler={updateStudentsHandler}
         />
       </div>
     </div>
