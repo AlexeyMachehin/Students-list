@@ -1,2 +1,21 @@
 @import url('./nullstyle.css');
-@import url('./variables.css');
+@import url('./variables/fonts.css');
+@import url('./variables/colors.css');
+
+@font-face {
+    font-family: 'Geometria-Regular';
+    src: local('Geometria-Regular'),
+      url('/fonts/Geometria-Regular.woff') format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Geometria-Medium';
+    src: local('Geometria-Medium'),
+      url('/fonts/Geometria-Medium.woff') format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Geometria-Bold';
+    src: local('Geometria-Bold'),
+      url('/fonts/Geometria-Bold.woff') format('woff');
+  }
