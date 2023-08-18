@@ -1,0 +1,12 @@
+.mainContent {
+  padding-top: 75px;
+}
+
+h1 {
+  margin-bottom: 47px;
+}
+
+.filters {
+  display: flex;
+  margin-bottom: 36px;
+}
