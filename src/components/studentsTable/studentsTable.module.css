@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+}
+
+tbody {
+  padding: 26px 20px;
+  box-shadow: var(--general-shadow);
+}
+
+th {
+  text-align: left;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

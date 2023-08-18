@@ -1,0 +1,6 @@
+.searchInput {
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 6px;
+  box-shadow: var(--general-shadow);
+}

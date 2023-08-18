@@ -1,0 +1,24 @@
+.header {
+  padding: 22px 0;
+  box-shadow: var(--general-shadow);
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+.text {
+  display: flex;
+  gap: 3px;
+}
+
+.text a {
+  color: var(--font-color-1);
+}
