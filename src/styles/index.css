@@ -1,6 +1,7 @@
 @import url('./nullstyle.css');
 @import url('./variables/fonts.css');
 @import url('./variables/colors.css');
+@import url('./variables/shadows.css');
 
 @font-face {
     font-family: 'Geometria-Regular';

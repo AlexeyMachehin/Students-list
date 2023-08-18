@@ -41,7 +41,7 @@ export function StudentsTable({
               <td>
                 <button
                   onClick={() => updateStudentsHandler(students, student.id)}>
-                  cart
+                  <img src="/cart.svg" alt="cart" />
                 </button>
               </td>
             </tr>
