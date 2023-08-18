@@ -1,8 +1,6 @@
 export async function fetchUsers() {
   try {
-    const response = await fetch(
-      'https://front-assignment-api.2tapp.cc/api/persons',
-    );
+    const response = await fetch(String(process.env.STUDENTS_URL));
 
     if (!response.ok) {
       throw new Error(`Request failed with status: ${response.status}`);
