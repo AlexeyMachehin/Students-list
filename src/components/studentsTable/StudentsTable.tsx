@@ -1,5 +1,6 @@
 import { IStudent } from '@/types/student';
 import classes from './studentsTable.module.css';
+import { calculateAge } from '@/utils/calculateAge';
 
 interface IStudentsTableProps {
   students: IStudent[];
@@ -13,12 +14,14 @@ export function StudentsTable({
   return (
     <table>
       <thead>
-        <th></th>
-        <th>ФИО</th>
-        <th>Специальность</th>
-        <th>Группа</th>
-        <th>Возраст</th>
-        <th>Рейтинг</th>
+        <tr>
+          <th></th>
+          <th>ФИО</th>
+          <th>Специальность</th>
+          <th>Группа</th>
+          <th>Возраст</th>
+          <th>Рейтинг</th>
+        </tr>
       </thead>
 
       <tbody>
@@ -35,7 +38,7 @@ export function StudentsTable({
               <td>{student.name}</td>
               <td>{student.specialty}</td>
               <td>{student.group}</td>
-              <td>{student.birthday}</td>
+              <td>{calculateAge(student.birthday)}</td>
               <td>{student.rating}</td>
               <td>{student.color}</td>
               <td>
@@ -47,7 +50,9 @@ export function StudentsTable({
             </tr>
           ))
         ) : (
-          <div>Список студентов пуст</div>
+        
+            <td className={classes.emptyList} colSpan={7}>Список студентов пуст</td>
+        
         )}
       </tbody>
     </table>

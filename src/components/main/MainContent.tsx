@@ -3,27 +3,33 @@ import { IStudent } from '@/types/student';
 import { fetchUsers } from '@/utils/fetchUsers';
 import { searchStudents } from '@/utils/searchStudents';
 import { StudentsTable } from '../studentsTable/StudentsTable';
-import { Select } from '../select/Select';
 import { sortStudents } from '@/utils/sortStudents';
 import { SortOptions } from '@/types/sortOptions';
 import { SearchInput } from '../searchInput/SearchInput';
 import { updateStudents } from '@/utils/updateStudents';
+import { DropdownMenu } from '../dropdownMenu/DropdownMenu';
+import { Trigger } from '../trigger/Trigger';
+import { DEFAULT_SORT_VALUE } from '@/const/const';
 import classes from './mainContent.module.css';
 
 export function MainContent() {
   const [students, setStudents] = useState<IStudent[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [foundStudents, setFoundStudents] = useState<IStudent[]>([]);
+  const [sortOption, setSortOption] = useState(DEFAULT_SORT_VALUE);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
-    fetchUsers().then(studentsData => setStudents(studentsData));
+    fetchUsers().then(studentsData =>
+      setStudents(sortStudents(studentsData, DEFAULT_SORT_VALUE)),
+    );
   }, []);
 
   useEffect(() => {
     setFoundStudents(searchStudents(searchQuery, students));
   }, [searchQuery]);
 
-  const selectHandler = (value: SortOptions): void => {
+  const handleClickOnItem = (value: SortOptions): void => {
     setStudents(sortStudents(students, value));
   };
 
@@ -42,17 +48,35 @@ export function MainContent() {
         <div className={classes.filters}>
           <SearchInput handler={setSearchQuery} />
 
-          <Select handler={selectHandler}>
-            <option value={SortOptions.NameAsc}>Имя А-Я</option>
-            <option value={SortOptions.NameDesc}>Имя Я-А</option>
-            <option value={SortOptions.AgeDesc}>Сначала старше</option>
-            <option value={SortOptions.RatingDesc}>Высокий рейтинг</option>
-            <option value={SortOptions.RatingAsc}>Низкий рейтинг</option>
-          </Select>
+          <DropdownMenu
+            setIsDropdownOpen={setIsDropdownOpen}
+            trigger={
+              <Trigger
+                isDropdownOpen={isDropdownOpen}
+                sortOption={sortOption}
+              />
+            }>
+            {SortOptions.toArray().map((option, index) => (
+              <div
+                key={index}
+                className={classes.option}
+                onClick={() => {
+                  setSortOption(option);
+                  handleClickOnItem(option);
+                }}>
+                <div>{SortOptions.toReadonly(option)}</div>
+                {sortOption === option && (
+                  <img src="/checkMark.svg" alt="checkMark" />
+                )}
+              </div>
+            ))}
+          </DropdownMenu>
         </div>
 
         <StudentsTable
-          students={foundStudents.length ? foundStudents : students}
+          students={
+            foundStudents.length || searchQuery ? foundStudents : students
+          }
           updateStudentsHandler={updateStudentsHandler}
         />
       </div>
