@@ -6,10 +6,10 @@ import { StudentsTable } from '../studentsTable/StudentsTable';
 import { sortStudents } from '@/utils/sortStudents';
 import { SortOptions } from '@/types/sortOptions';
 import { SearchInput } from '../searchInput/SearchInput';
-import { updateStudents } from '@/utils/updateStudents';
 import { DropdownMenu } from '../dropdownMenu/DropdownMenu';
 import { Trigger } from '../trigger/Trigger';
 import { DEFAULT_SORT_VALUE } from '@/const/const';
+import { IupdateStudents, updateStudents } from '@/utils/updateStudents';
 import classes from './mainContent.module.css';
 
 export function MainContent() {
@@ -33,11 +33,12 @@ export function MainContent() {
     setStudents(sortStudents(students, value));
   };
 
-  const updateStudentsHandler = (
-    studentsForUpdate: IStudent[],
-    studentId: number,
-  ): void => {
-    setStudents(updateStudents(studentsForUpdate, studentId));
+  const updateStudentsHandler = ({
+    studentsForUpdate,
+    id,
+    color,
+  }: IupdateStudents): void => {
+    setStudents(updateStudents({ studentsForUpdate, id, color }));
   };
 
   return (
@@ -65,6 +66,7 @@ export function MainContent() {
                   handleClickOnItem(option);
                 }}>
                 <div>{SortOptions.toReadonly(option)}</div>
+
                 {sortOption === option && (
                   <img src="/checkMark.svg" alt="checkMark" />
                 )}

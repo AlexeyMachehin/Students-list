@@ -20,3 +20,21 @@ th {
 .emptyList {
   padding: 30px 0;
 }
+
+.colorCircle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.red {
+  background-color: #e25b5b;
+}
+
+.green {
+  background-color: #83c872;
+}
+
+.blue {
+  background-color: #49c2e8;
+}

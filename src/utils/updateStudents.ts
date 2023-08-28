@@ -1,7 +1,31 @@
 import { IStudent } from '@/types/student';
 
-export function updateStudents(students: IStudent[], id: number): IStudent[] {
-  const updatedStudents = students.filter(student => student.id !== id);
+export interface IupdateStudents {
+  studentsForUpdate: IStudent[];
+  id?: number;
+  color?: string;
+}
 
-  return updatedStudents;
+export function updateStudents({
+  studentsForUpdate,
+  id,
+  color,
+}: IupdateStudents): IStudent[] {
+  let updatedStudents = null;
+
+  if (id) {
+    updatedStudents = studentsForUpdate.filter(student => student.id !== id);
+  }
+
+  if (color) {
+    updatedStudents = studentsForUpdate.filter(
+      student => student.color === color,
+    );
+  }
+
+  if (updatedStudents && updatedStudents.length) {
+    return updatedStudents;
+  } else {
+    return [];
+  }
 }

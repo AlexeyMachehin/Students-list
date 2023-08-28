@@ -1,10 +1,15 @@
 import { IStudent } from '@/types/student';
-import classes from './studentsTable.module.css';
 import { calculateAge } from '@/utils/calculateAge';
+import { IupdateStudents } from '@/utils/updateStudents';
+import classes from './studentsTable.module.css';
 
 interface IStudentsTableProps {
   students: IStudent[];
-  updateStudentsHandler: any;
+  updateStudentsHandler: ({
+    studentsForUpdate,
+    id,
+    color,
+  }: IupdateStudents) => void;
 }
 
 export function StudentsTable({
@@ -40,19 +45,33 @@ export function StudentsTable({
               <td>{student.group}</td>
               <td>{calculateAge(student.birthday)}</td>
               <td>{student.rating}</td>
-              <td>{student.color}</td>
               <td>
                 <button
-                  onClick={() => updateStudentsHandler(students, student.id)}>
+                  className={`${classes.colorCircle} ${classes[student.color]}`}
+                  onClick={() =>
+                    updateStudentsHandler({
+                      studentsForUpdate: students,
+                      color: student.color,
+                    })
+                  }></button>
+              </td>
+              <td>
+                <button
+                  onClick={() =>
+                    updateStudentsHandler({
+                      studentsForUpdate: students,
+                      id: student.id,
+                    })
+                  }>
                   <img src="/cart.svg" alt="cart" />
                 </button>
               </td>
             </tr>
           ))
         ) : (
-        
-            <td className={classes.emptyList} colSpan={7}>Список студентов пуст</td>
-        
+          <td className={classes.emptyList} colSpan={7}>
+            Список студентов пуст
+          </td>
         )}
       </tbody>
     </table>
