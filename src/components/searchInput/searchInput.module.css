@@ -1,4 +1,5 @@
 .searchInput {
+  min-width: 220px;
   width: 100%;
   padding: 15px 20px 15px 55px;
   border-radius: 6px;

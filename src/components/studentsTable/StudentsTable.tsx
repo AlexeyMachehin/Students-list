@@ -2,6 +2,7 @@ import { IStudent } from '@/types/student';
 import { calculateAge } from '@/utils/calculateAge';
 import { IupdateStudents } from '@/utils/updateStudents';
 import classes from './studentsTable.module.css';
+import { Specialities } from '@/types/specialties';
 
 interface IStudentsTableProps {
   students: IStudent[];
@@ -41,7 +42,7 @@ export function StudentsTable({
                 />
               </td>
               <td>{student.name}</td>
-              <td>{student.specialty}</td>
+              <td>{Specialities.toReadonly(student.specialty)}</td>
               <td>{student.group}</td>
               <td>{calculateAge(student.birthday)}</td>
               <td>{student.rating}</td>
@@ -57,6 +58,7 @@ export function StudentsTable({
               </td>
               <td>
                 <button
+                  className={classes.deleteButton}
                   onClick={() =>
                     updateStudentsHandler({
                       studentsForUpdate: students,

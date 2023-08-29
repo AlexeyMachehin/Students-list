@@ -27,7 +27,7 @@ export function MainContent() {
 
   useEffect(() => {
     setFoundStudents(searchStudents(searchQuery, students));
-  }, [searchQuery]);
+  }, [searchQuery, students]);
 
   const handleClickOnItem = (value: SortOptions): void => {
     setStudents(sortStudents(students, value));
