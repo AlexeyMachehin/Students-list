@@ -10,7 +10,9 @@ export function Trigger({
 }) {
   return (
     <button className={classes.trigger}>
-      <div>{SortOptions.toReadonly(sortOption)}</div>
+      <div className={classes.sortOptions}>
+        {SortOptions.toReadonly(sortOption)}
+      </div>
       <img
         className={isDropdownOpen ? classes.sortIconInverted : classes.sortIcon}
         src="/sortIcon.svg"

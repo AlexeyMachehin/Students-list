@@ -1,5 +1,5 @@
 .mainContent {
-  padding-top: 75px;
+  padding: 75px 20px 0 20px;
 }
 
 h1 {
@@ -21,4 +21,18 @@ h1 {
   padding: 12px 18px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+@media screen and (width <= 576px) {
+  .mainContent {
+    padding-top: 40px;
+  }
+
+  h1 {
+    margin-bottom: 22px;
+  }
+
+  .filters {
+    margin-bottom: 22px;
+  }
 }

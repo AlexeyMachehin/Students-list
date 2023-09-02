@@ -11,6 +11,7 @@ import { Trigger } from '../trigger/Trigger';
 import { DEFAULT_SORT_VALUE } from '@/const/const';
 import { IupdateStudents, updateStudents } from '@/utils/updateStudents';
 import classes from './mainContent.module.css';
+import { StudentsCards } from '../studentsCards/StudentsCards';
 
 export function MainContent() {
   const [students, setStudents] = useState<IStudent[]>([]);
@@ -76,6 +77,13 @@ export function MainContent() {
         </div>
 
         <StudentsTable
+          students={
+            foundStudents.length || searchQuery ? foundStudents : students
+          }
+          updateStudentsHandler={updateStudentsHandler}
+        />
+
+        <StudentsCards
           students={
             foundStudents.length || searchQuery ? foundStudents : students
           }
