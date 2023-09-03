@@ -1,0 +1,35 @@
+.trigger {
+  display: flex;
+  justify-content: space-between;
+  min-width: 180px;
+  padding: 14px;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: var(--general-shadow);
+}
+
+.trigger > :not(:last-child) {
+  margin-right: 10px;
+}
+
+.sortIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.sortIconInverted {
+  width: 20px;
+  height: 20px;
+  transform: rotate(180deg);
+}
+
+@media screen and (width <= 576px) {
+  .sortOptions {
+    display: none;
+  }
+
+  .trigger {
+    min-width: 0px;
+    max-width: 54px;
+  }
+}

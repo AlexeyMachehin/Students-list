@@ -1,3 +1,5 @@
+import { Specialities } from './specialties';
+
 export interface IStudent {
   avatar: string;
   birthday: string;
@@ -8,5 +10,5 @@ export interface IStudent {
   name: string;
   rating: number;
   sex: string;
-  specialty: string;
+  specialty: Specialities;
 }

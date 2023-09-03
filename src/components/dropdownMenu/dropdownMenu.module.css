@@ -1,0 +1,26 @@
+.dropdownMenuContainer {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  padding: 5px;
+  gap: 10px;
+  background-color: #fff;
+  font-style: var(--medium-font);
+  font-size: 12px;
+  box-shadow: var(--general-shadow);
+  border-radius: 6px;
+  z-index: 1;
+}
+
+.displayNone {
+  display: none;
+}
+
+.option :hover {
+  background: rgba(73, 194, 232, 0.11);
+}
