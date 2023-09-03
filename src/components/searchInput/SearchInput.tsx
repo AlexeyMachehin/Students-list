@@ -1,6 +1,11 @@
 import classes from './searchInput.module.css';
+import React from 'react';
 
-export function SearchInput({ handler }: { handler: (value: string) => void }) {
+export const SearchInput = React.memo(function SearchInput({
+  handler,
+}: {
+  handler: (value: string) => void;
+}) {
   return (
     <div className={classes.searchInputWrapper}>
       <input
@@ -11,4 +16,4 @@ export function SearchInput({ handler }: { handler: (value: string) => void }) {
       />
     </div>
   );
-}
+});

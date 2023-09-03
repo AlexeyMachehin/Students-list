@@ -1,6 +1,6 @@
 import { IStudent } from '@/types/student';
 import { IupdateStudents } from '@/utils/updateStudents';
-import { StudentCard } from '../studentCard/StudentCard';
+import { StudentCard } from './studentCard/StudentCard';
 import classes from './studentCards.module.css';
 
 interface IStudentsCardsProps {

@@ -9,7 +9,7 @@
   width: 180px;
   padding: 5px;
   gap: 10px;
-  background-color: #fff;
+  background-color: var(--background-color-1);
   font-style: var(--medium-font);
   font-size: 12px;
   box-shadow: var(--general-shadow);
@@ -22,5 +22,5 @@
 }
 
 .option :hover {
-  background: rgba(73, 194, 232, 0.11);
+  background: var(--background-option-hover);
 }

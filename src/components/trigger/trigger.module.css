@@ -4,7 +4,7 @@
   min-width: 180px;
   padding: 14px;
   border-radius: 6px;
-  background-color: #fff;
+  background-color: var(--background-color-1);
   box-shadow: var(--general-shadow);
 }
 

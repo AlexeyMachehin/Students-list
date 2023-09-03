@@ -87,6 +87,7 @@ export function DropdownMenu({
       callback();
     }
 
+    setIsDropdownOpen(prevIsOpen => !prevIsOpen);
     setIsOpenOnClick(false);
   };
 
