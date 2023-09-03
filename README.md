@@ -37,7 +37,7 @@
 
 ## Запуск:
 Ввести в терминале команды:
-* git clone https://...
+* git clone https://github.com/AlexeyMachehin/Students-list.git
 * yarn
 * yarn build
 * yarn preview
