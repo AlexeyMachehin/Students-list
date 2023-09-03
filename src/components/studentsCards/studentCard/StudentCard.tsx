@@ -1,3 +1,4 @@
+import React from 'react';
 import { IStudent } from '@/types/student';
 import { IupdateStudents } from '@/utils/updateStudents';
 import { calculateAge } from '@/utils/calculateAge';
@@ -14,7 +15,7 @@ interface IStudentsTableProps {
   }: IupdateStudents) => void;
 }
 
-export function StudentCard({
+export const StudentCard = React.memo(function StudentCard({
   student,
   students,
   updateStudentsHandler,
@@ -75,4 +76,4 @@ export function StudentCard({
       </div>
     </div>
   );
-}
+});

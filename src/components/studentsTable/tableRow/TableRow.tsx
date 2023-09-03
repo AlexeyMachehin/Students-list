@@ -1,3 +1,4 @@
+import React from 'react';
 import { Specialities } from '@/types/specialties';
 import { calculateAge } from '@/utils/calculateAge';
 import { IStudent } from '@/types/student';
@@ -14,7 +15,7 @@ interface ITableRowProps {
   }: IupdateStudents) => void;
 }
 
-export function TableRow({
+export const TableRow = React.memo(function TableRow({
   students,
   student,
   updateStudentsHandler,
@@ -74,4 +75,4 @@ export function TableRow({
       </td>
     </tr>
   );
-}
+});
