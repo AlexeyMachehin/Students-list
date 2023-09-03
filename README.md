@@ -1,4 +1,4 @@
-﻿## Название
+﻿## Students list
 
 Ссылка на netlify.com: [Students-list](https://students-list-doubletapp.netlify.app)
 
