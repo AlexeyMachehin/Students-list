@@ -1,0 +1,10 @@
+.emptyList {
+  padding: 30px 0;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  width: 335px;
+  margin: 0 auto;
+}

@@ -1,5 +1,5 @@
 .header {
-  padding: 22px 0;
+  padding: 22px 20px;
   box-shadow: var(--general-shadow);
 }
 
@@ -21,4 +21,14 @@
 
 .text a {
   color: var(--font-color-1);
+}
+
+@media screen and (width <= 576px) {
+  .hiddenInMobile {
+    display: none;
+  }
+
+  .content {
+    gap: 26px;
+  }
 }

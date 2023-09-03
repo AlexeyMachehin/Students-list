@@ -1,6 +1,27 @@
 .searchInput {
+  min-width: 220px;
   width: 100%;
-  padding: 15px 20px;
+  padding: 15px 20px 15px 55px;
   border-radius: 6px;
   box-shadow: var(--general-shadow);
+}
+
+.searchInput::placeholder {
+  font-size: 16px;
+}
+
+.searchInputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.searchInputWrapper::before {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  content: '';
+  width: 19px;
+  height: 19px;
+  background-image: url('/searchIcon.svg');
+  z-index: 2;
 }
