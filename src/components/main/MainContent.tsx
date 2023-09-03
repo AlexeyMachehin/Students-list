@@ -12,6 +12,7 @@ import { DEFAULT_SORT_VALUE } from '@/const/const';
 import { IupdateStudents, updateStudents } from '@/utils/updateStudents';
 import classes from './mainContent.module.css';
 import { StudentsCards } from '../studentsCards/StudentsCards';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 export function MainContent() {
   const [students, setStudents] = useState<IStudent[]>([]);
@@ -19,6 +20,8 @@ export function MainContent() {
   const [foundStudents, setFoundStudents] = useState<IStudent[]>([]);
   const [sortOption, setSortOption] = useState(DEFAULT_SORT_VALUE);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     fetchUsers().then(studentsData =>
@@ -43,11 +46,11 @@ export function MainContent() {
   };
 
   return (
-    <div className={classes.mainContent}>
+    <main className={classes.mainContent}>
       <div className="container">
         <h1>Студенты</h1>
 
-        <div className={classes.filters}>
+        <section className={classes.filters}>
           <SearchInput handler={setSearchQuery} />
 
           <DropdownMenu
@@ -74,22 +77,24 @@ export function MainContent() {
               </div>
             ))}
           </DropdownMenu>
-        </div>
+        </section>
 
-        <StudentsTable
-          students={
-            foundStudents.length || searchQuery ? foundStudents : students
-          }
-          updateStudentsHandler={updateStudentsHandler}
-        />
-
-        <StudentsCards
-          students={
-            foundStudents.length || searchQuery ? foundStudents : students
-          }
-          updateStudentsHandler={updateStudentsHandler}
-        />
+        {isMobile ? (
+          <StudentsCards
+            students={
+              foundStudents.length || searchQuery ? foundStudents : students
+            }
+            updateStudentsHandler={updateStudentsHandler}
+          />
+        ) : (
+          <StudentsTable
+            students={
+              foundStudents.length || searchQuery ? foundStudents : students
+            }
+            updateStudentsHandler={updateStudentsHandler}
+          />
+        )}
       </div>
-    </div>
+    </main>
   );
 }

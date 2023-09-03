@@ -2,7 +2,7 @@ import classes from './header.module.css';
 
 export function Header() {
   return (
-    <div className={classes.header}>
+    <header className={classes.header}>
       <div className="container">
         <div className={classes.content}>
           <img className={classes.logo} src="/logo.svg" alt="logo" />
@@ -18,6 +18,6 @@ export function Header() {
           </h2>
         </div>
       </div>
-    </div>
+    </header>
   );
 }

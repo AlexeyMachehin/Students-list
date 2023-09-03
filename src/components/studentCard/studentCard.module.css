@@ -1,0 +1,82 @@
+.card {
+  width: 335px;
+  border-radius: 6px;
+  box-shadow: 0px 7px 64px 0px rgba(0, 0, 0, 0.07);
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.deleteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  filter: drop-shadow(0px 0px 16.371490478515625px rgba(0, 0, 0, 0.1));
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.headerContent {
+  display: flex;
+  font-size: 15px;
+}
+
+.colorCircle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.nameSecondary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.red {
+  background-color: #e25b5b;
+}
+
+.green {
+  background-color: #83c872;
+}
+
+.blue {
+  background-color: #49c2e8;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  margin-left: 60px;
+  padding: 16px;
+  font-size: 12px;
+}
+
+.circle {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #49c2e8;
+}
+
+.mainString {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
