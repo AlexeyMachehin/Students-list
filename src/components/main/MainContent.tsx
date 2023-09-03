@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { IStudent } from '@/types/student';
 import { fetchUsers } from '@/utils/fetchUsers';
 import { searchStudents } from '@/utils/searchStudents';
@@ -35,17 +35,16 @@ export function MainContent() {
     setFoundStudents(searchStudents(searchQuery, students));
   }, [searchQuery, students]);
 
-  const handleClickOnItem = (value: SortOptions): void => {
+  const handleClickSortOption = (value: SortOptions): void => {
     setStudents(sortStudents(students, value));
   };
 
-  const updateStudentsHandler = ({
-    studentsForUpdate,
-    id,
-    color,
-  }: IupdateStudents): void => {
-    setStudents(updateStudents({ studentsForUpdate, id, color }));
-  };
+  const updateStudentsHandler = useCallback(
+    ({ studentsForUpdate, id, color }: IupdateStudents): void => {
+      setStudents(updateStudents({ studentsForUpdate, id, color }));
+    },
+    [setStudents],
+  );
 
   return (
     <div>
@@ -73,7 +72,7 @@ export function MainContent() {
                     className={classes.option}
                     onClick={() => {
                       setSortOption(option);
-                      handleClickOnItem(option);
+                      handleClickSortOption(option);
                     }}>
                     <div>{SortOptions.toReadonly(option)}</div>
 

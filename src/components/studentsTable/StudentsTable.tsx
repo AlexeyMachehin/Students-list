@@ -1,7 +1,6 @@
 import { IStudent } from '@/types/student';
-import { calculateAge } from '@/utils/calculateAge';
 import { IupdateStudents } from '@/utils/updateStudents';
-import { Specialities } from '@/types/specialties';
+import { TableRow } from './tableRow/TableRow';
 import classes from './studentsTable.module.css';
 
 interface IStudentsTableProps {
@@ -34,58 +33,12 @@ export function StudentsTable({
         <tbody>
           {students.length ? (
             students.map(student => (
-              <tr key={student.id}>
-                <td>
-                  <img
-                    className={classes.avatar}
-                    src={student.avatar}
-                    alt="avatar"
-                  />
-                </td>
-                <td>
-                  <div className={classes.cellContent}>{student.name}</div>
-                </td>
-                <td>
-                  <div className={classes.cellContent}>
-                    {Specialities.toReadonly(student.specialty)}
-                  </div>
-                </td>
-                <td>
-                  <div className={classes.cellContent}>{student.group}</div>
-                </td>
-                <td>
-                  <div className={classes.cellContent}>
-                    {calculateAge(student.birthday)}
-                  </div>
-                </td>
-                <td>
-                  <div className={classes.cellContent}>{student.rating}</div>
-                </td>
-                <td>
-                  <button
-                    className={`${classes.colorCircle} ${
-                      classes[student.color]
-                    }`}
-                    onClick={() =>
-                      updateStudentsHandler({
-                        studentsForUpdate: students,
-                        color: student.color,
-                      })
-                    }></button>
-                </td>
-                <td>
-                  <button
-                    className={classes.deleteButton}
-                    onClick={() =>
-                      updateStudentsHandler({
-                        studentsForUpdate: students,
-                        id: student.id,
-                      })
-                    }>
-                    <img src="/cart.svg" alt="cart" />
-                  </button>
-                </td>
-              </tr>
+              <TableRow
+                key={student.id}
+                students={students}
+                student={student}
+                updateStudentsHandler={updateStudentsHandler}
+              />
             ))
           ) : (
             <td className={classes.emptyList} colSpan={7}>
