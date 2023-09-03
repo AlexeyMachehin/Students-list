@@ -35,7 +35,7 @@ export function MainContent() {
     setFoundStudents(searchStudents(searchQuery, students));
   }, [searchQuery, students]);
 
-  const handleClickOnItem = (value: SortOptions): void => {
+  const handleClickSortOption = (value: SortOptions): void => {
     setStudents(sortStudents(students, value));
   };
 
@@ -73,7 +73,7 @@ export function MainContent() {
                     className={classes.option}
                     onClick={() => {
                       setSortOption(option);
-                      handleClickOnItem(option);
+                      handleClickSortOption(option);
                     }}>
                     <div>{SortOptions.toReadonly(option)}</div>
 

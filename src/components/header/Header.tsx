@@ -6,6 +6,7 @@ export function Header() {
       <div className="container">
         <div className={classes.content}>
           <img className={classes.logo} src="/logo.svg" alt="logo" />
+
           <h2 className={classes.text}>
             <span>STUDENTS</span>
             <span className={classes.hiddenInMobile}>by</span>

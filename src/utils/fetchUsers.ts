@@ -8,13 +8,10 @@ export async function fetchUsers() {
 
     const studentsData = await response.json();
 
-    if (!studentsData.students) {
-      throw new Error('Data structure is not as expected');
-    }
-
     return studentsData.students;
   } catch (error) {
     console.log(`Cannot fetch users: ${error}`);
+    alert(`Cannot fetch users: ${error}`);
     return [];
   }
 }

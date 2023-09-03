@@ -1,3 +1,8 @@
 :root {
   --font-color-1: #49c2e8;
+  --background-color-1: #fff;
+  --background-option-hover: rgba(73, 194, 232, 0.11);
+  --red: #e25b5b;
+  --green: #83c872;
+  --blue: #49c2e8;
 }

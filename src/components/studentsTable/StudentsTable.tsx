@@ -42,25 +42,31 @@ export function StudentsTable({
                     alt="avatar"
                   />
                 </td>
+
                 <td>
                   <div className={classes.cellContent}>{student.name}</div>
                 </td>
+
                 <td>
                   <div className={classes.cellContent}>
                     {Specialities.toReadonly(student.specialty)}
                   </div>
                 </td>
+
                 <td>
                   <div className={classes.cellContent}>{student.group}</div>
                 </td>
+
                 <td>
                   <div className={classes.cellContent}>
                     {calculateAge(student.birthday)}
                   </div>
                 </td>
+
                 <td>
                   <div className={classes.cellContent}>{student.rating}</div>
                 </td>
+
                 <td>
                   <button
                     className={`${classes.colorCircle} ${
@@ -73,6 +79,7 @@ export function StudentsTable({
                       })
                     }></button>
                 </td>
+
                 <td>
                   <button
                     className={classes.deleteButton}

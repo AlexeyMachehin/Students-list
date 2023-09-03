@@ -1,8 +1,8 @@
 import { IStudent } from '@/types/student';
 import { IupdateStudents } from '@/utils/updateStudents';
-import classes from './studentCard.module.css';
 import { calculateAge } from '@/utils/calculateAge';
 import { Specialities } from '@/types/specialties';
+import classes from './studentCard.module.css';
 
 interface IStudentsTableProps {
   student: IStudent;
@@ -37,8 +37,8 @@ export function StudentCard({
                   })
                 }></button>
 
-              <img src="/star.svg" alt="star" />
-              <div>{student.rating}</div>
+              <img className={classes.star} src="/star.svg" alt="star" />
+              <div className={classes.rating}>{student.rating}</div>
             </div>
           </div>
         </div>
@@ -61,10 +61,12 @@ export function StudentCard({
             <div className={classes.circle}></div>
             {calculateAge(student.birthday)}
           </div>
+
           <div className={classes.mainString}>
             <div className={classes.circle}></div>
             {Specialities.toReadonly(student.specialty)}
           </div>
+
           <div className={classes.mainString}>
             <div className={classes.circle}></div>
             {student.group}
