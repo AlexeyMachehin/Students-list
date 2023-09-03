@@ -19,7 +19,7 @@ export function StudentsCards({
   return (
     <div>
       {students.length ? (
-        <section className={classes.cardsWrapper}>
+        <section className={classes.cards}>
           {students.map(student => (
             <StudentCard
               key={student.id}
